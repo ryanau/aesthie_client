@@ -12,18 +12,26 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
+import Nav from 'components/Nav';
+import styled from 'styled-components';
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
   };
-
   render() {
     return (
       <div>
-        {React.Children.toArray(this.props.children)}
+        <Container>
+          {React.Children.toArray(this.props.children)}
+        </Container>
+        <Nav router={this.props.router} />
       </div>
     );
   }
 }
+
+const Container = styled.div`
+  padding: 0.5rem 0.5rem 5rem 0.5rem;
+`

@@ -1,0 +1,71 @@
+{
+  "places": {
+    "1": [
+      {
+        "id": 1,
+        "name": "Clarion Alley",
+        "district": "Mission",
+        "author": "Ryan Au",
+        "coordinates": {
+          "lat": "37.7841393",
+          "lng": "-122.3957547"
+        },
+        "tips": [],
+        "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
+        "hash_tags": [
+          "blue", "bright", "circles", "door"
+        ],
+        "info": [
+          { "parking": 4 },
+          { "neighborhood": 1 },
+          { "popularity": 9 },
+          { "temporary": "Yes" }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Philz Coffee",
+        "district": "SOMA",
+        "author": "Ryan Au",
+        "coordinates": {
+          "lat": "37.7841393",
+          "lng": "-122.3957547"
+        },
+        "tips": [],
+        "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
+        "hash_tags": [
+          "plain", "dark", "bluedoor", "bright"
+        ],
+        "info": [
+          { "parking": 3 },
+          { "neighborhood": 10 },
+          { "popularity": 6 },
+          { "temporary": "No" }
+        ]
+      }
+    ],
+    "2": [
+      {
+        "id": 3,
+        "name": "Pink Wall",
+        "district": "Melrose",
+        "author": "Ryan Au",
+        "coordinates": {
+          "lat": "37.7841393",
+          "lng": "-122.3957547"
+        },
+        "tips": [],
+        "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
+        "hash_tags": [
+          "blue", "bright", "circles", "door"
+        ],
+        "info": [
+          { "parking": 4 },
+          { "neighborhood": 1 },
+          { "popularity": 9 },
+          { "temporary": "Yes" }
+        ]
+      }
+    ]
+  }
+}

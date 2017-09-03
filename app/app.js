@@ -5,6 +5,9 @@
  * code.
  */
 
+// Import React-Select stylesheet
+import 'react-select/dist/react-select.css';
+
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
 

@@ -22,12 +22,56 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
+          import('containers/HomePage/reducer'),
+          import('containers/HomePage/sagas'),
           import('containers/HomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component]) => {
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('homePage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/places/:id',
+      name: 'place',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Place/reducer'),
+          import('containers/Place/sagas'),
+          import('containers/Place'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('place', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/nearby',
+      name: 'nearby',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Nearby/reducer'),
+          import('containers/Nearby/sagas'),
+          import('containers/Nearby'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('nearby', reducer.default);
+          injectSagas(sagas.default);
           renderRoute(component);
         });
 
