@@ -25,23 +25,21 @@ import Dialog from 'material-ui/Dialog';
 import EmailIcon from 'material-ui-icons/Email';
 import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown';
 import Typography from 'material-ui/Typography';
+import SelectCityModal from 'components/SelectCityModal';
 
-import Modal from 'components/Modal';
 import messages from './messages';
 import { getCities, getCitiesById } from 'entities/cities/selectors';
 import { getPlaces } from 'entities/places/selectors';
-import { getSelectedCityId, getIsSelectCityModalOpen } from './selectors';
-import {
-  changeSelectedCity,
-  closeSelectCityModal,
-  openSelectCityModal,
-} from './actions';
+import { getIsSelectCityModalOpen } from './selectors';
+import { closeSelectCityModal, openSelectCityModal } from './actions';
+import { getSelectedCityId } from 'root/selectors';
+import { changeSelectedCity } from 'root/actions';
 import { fetchPlaces } from 'entities/places/actions';
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    const { updatePlaces, citiesById, selectedCityId } = this.props;
-    updatePlaces(JSON.stringify(selectedCityId), '');
+    const { placesList, updatePlaces, citiesById, selectedCityId } = this.props;
+    placesList.isEmpty() && updatePlaces(JSON.stringify(selectedCityId), '');
   }
   componentWillReceiveProps(nextProps) {
     const { updatePlaces, citiesById, selectedCityId } = this.props;
@@ -57,37 +55,14 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
       isSelectCityModalOpen,
       handleCloseSelectCityModal,
     } = this.props;
-    const onImageButtonClicked = (id) => {
-      if (id !== selectedCityId) {
-        handleChangeSelectedCity(id);
-      }
-      handleCloseSelectCityModal();
-    }
-    const images = citiesList.map((city) => {
-      const name = city.get('name');
-      const id = city.get('id');
-      return (
-        <ImageButton
-          key={id}
-          isSelected={id === selectedCityId}
-          onClick={() => onImageButtonClicked(id)}
-        >
-          <CityName>
-            {name}
-          </CityName>
-          <img alt={name} src="http://via.placeholder.com/280x200" />
-        </ImageButton>
-      );
-    })
     return (
-      <Modal
-        isOpen={isSelectCityModalOpen}
-        onCloseModal={handleCloseSelectCityModal}
-      >
-        <ImageButtonsWrapper>
-          {images}
-        </ImageButtonsWrapper>
-      </Modal>
+      <SelectCityModal
+        citiesList={citiesList}
+        selectedCityId={selectedCityId}
+        handleChangeSelectedCity={handleChangeSelectedCity}
+        isSelectCityModalOpen={isSelectCityModalOpen}
+        handleCloseSelectCityModal={handleCloseSelectCityModal}
+      />
     );
   }
   renderSelectCityButton = () => {
@@ -147,26 +122,6 @@ const SelectCityButton = styled.button`
 
 const SearchBarWrapper = styled.section`
   margin-top: 1rem;
-`
-
-const ImageButtonsWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin-top: 20%;
-  align-items: center;
-`
-
-const ImageButton = styled.button`
-  align-items: center;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  opacity: ${props => props.isSelected ? 1 : 0.5}
-`
-
-const CityName = styled.div`
-  position: absolute;
 `
 
 const SelectCityButtonWrapper = styled.div`

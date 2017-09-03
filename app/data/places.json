@@ -10,7 +10,10 @@
           "lat": "37.7841393",
           "lng": "-122.3957547"
         },
-        "tips": [],
+        "tips": [
+          "Bacon bacon bacon",
+          "Fatty fat fat"
+        ],
         "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
         "hash_tags": [
           "blue", "bright", "circles", "door"
@@ -31,7 +34,9 @@
           "lat": "37.7841393",
           "lng": "-122.3957547"
         },
-        "tips": [],
+        "tips": [
+          "juice"
+        ],
         "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
         "hash_tags": [
           "plain", "dark", "bluedoor", "bright"

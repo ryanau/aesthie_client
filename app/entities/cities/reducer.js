@@ -7,8 +7,24 @@ import {
 const initialState = fromJS({
   allIds: ['1', '2'],
   byId: {
-    1: { id: 1, name: 'San Francisco', tag: 'sanfrancisco' },
-    2: { id: 2, name: 'Los Angeles', tag: 'losangeles' },
+    1: {
+      id: 1,
+      name: 'San Francisco',
+      tag: 'sanfrancisco',
+      coordinates: {
+        lat: 37.7749,
+        lng: -122.4194,
+      },
+    },
+    2: {
+      id: 2,
+      name: 'Los Angeles',
+      tag: 'losangeles',
+      coordinates: {
+        lat: 34.0522,
+        lng: -118.2437,
+      },
+    },
   },
 });
 

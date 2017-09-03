@@ -11,4 +11,14 @@ const searchPlaces = (selectedCityId, params) => {
   });
 }
 
-export default searchPlaces;
+const searchPlace = (id) => {
+  const keys = Object.keys(data["places"]);
+  const result = keys.map((key) => {
+    return data["places"][key].map((place) => {
+      return place["id"] === id ? place : null;
+    }).filter(Boolean)[0];
+  }).filter(Boolean)[0];
+  return result ? result : null;
+}
+
+export { searchPlaces, searchPlace };

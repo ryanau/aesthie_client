@@ -37,6 +37,7 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
       }],
     };
   }
+  componentWillReceiveProps
   renderMarkers = () => {
     return this.state.markers.map((marker) => {
       return (
@@ -47,11 +48,13 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
     });
   }
   render() {
+    const { center } = this.props;
     return (
       <GoogleMap
-        defaultZoom={3}
-        defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+        defaultZoom={11}
+        defaultCenter={center}
         defaultOptions={DEFAULT_OPTIONS}
+        center={center}
       >
         {this.renderMarkers()}
       </GoogleMap>

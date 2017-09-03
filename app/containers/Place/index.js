@@ -24,8 +24,20 @@ import Divider from 'material-ui/Divider';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
+import { fetchPlace } from './actions';
+import { getPlace, getIsLoaded } from './selectors';
 
 export class Place extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    const id = this.props.router.getCurrentLocation().pathname.match(/\/{1}\d+/)[0].substring(1);
+    this.props.updatePlace(parseInt(id));
+  }
+  componentWillReceiveProps(nextProps) {
+    const { isLoaded, place } = nextProps;
+    if (isLoaded && !place) {
+      return this.props.router.push('/not_found');
+    }
+  }
   renderImagesSlider = () => {
     const settings = {
       dots: true,
@@ -73,28 +85,31 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
     );
   }
   renderHeaderInfo = () => {
+    const { name, district } = this.props.place;
     return (
       <section>
         <Typography type="title" component="h1">
-          Pink Wall
+          {name}
         </Typography>
         <Typography type="subheading" component="h2">
-          Mission
+          {district}
         </Typography>
       </section>
     );
   }
   renderControls = () => {
+    const { author, coordinates: { lat, lng } } = this.props.place;
+    const shareURL = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
     return (
       <Controls>
         <Typography type="body2" component="h3">
           <Chip
-            avatar={<Avatar alt="name" src="http://via.placeholder.com/20x20" />}
-            label="Ryan Au"
+            avatar={<Avatar alt={author} src="http://via.placeholder.com/20x20" />}
+            label={author}
           />
         </Typography>
         <div>
-          <Button dense href="https://www.google.com/maps/@37.7841393,-122.3957547,15z"><OpenInNewIcon />maps</Button>
+          <Button dense href={shareURL}><OpenInNewIcon />maps</Button>
           <Button dense><ShareIcon />share</Button>
         </div>
       </Controls>
@@ -104,7 +119,7 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
     return (
       <Description>
         <Typography type="body1" component="p">
-          Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.
+          {this.props.place.description}
         </Typography>
       </Description>
     );
@@ -117,12 +132,13 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
         </Typography>
         <TipsList>
           <TipRow>
-            <Typography type="body1" component="p">
-              - Chicken venison turducken cupim, sausage filet mignon
-            </Typography>
-            <Typography type="body1" component="p">
-              - Chicken venison turducken cupim, sausage filet mignon
-            </Typography>
+            {this.props.place.tips.map(tip => {
+              return (
+                <Typography key={tip} type="body1" component="p">
+                  - {tip}
+                </Typography>
+              );
+            })}
           </TipRow>
         </TipsList>
       </TipsListWrapper>
@@ -131,58 +147,41 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
   renderInfoList = () => {
     return (
       <InfoList>
-        <InfoItem>
-          <Typography type="body2" component="h5">
-            Parking
-          </Typography>
-          <Typography type="body1" component="p">
-            Street
-          </Typography>
-        </InfoItem>
-        <InfoItem>
-          <Typography type="body2" component="h5">
-            Neighborhood
-          </Typography>
-          <Typography type="body1" component="p">
-            Clean
-          </Typography>
-        </InfoItem>
-        <InfoItem>
-          <Typography type="body2" component="h5">
-            Popularity
-          </Typography>
-          <Typography type="body1" component="p">
-            Iconoic
-          </Typography>
-        </InfoItem>
-        <InfoItem>
-          <Typography type="body2" component="h5">
-            Temporary
-          </Typography>
-          <Typography type="body1" component="p">
-            No
-          </Typography>
-        </InfoItem>
+          {this.props.place.info.map(info => {
+            return (
+              <InfoItem key={Object.keys(info)[0]}>
+                <Typography type="body2" component="h5">
+                  {Object.keys(info)[0]}
+                </Typography>
+                <Typography type="body1" component="p">
+                  {Object.values(info)[0]}
+                </Typography>
+              </InfoItem>
+            );
+          })}
       </InfoList>
     );
   }
   renderHashTags = () => {
+    const tags = this.props.place.hash_tags.map(tag => {
+      return (
+        <StyledChip key={tag} label={`#${tag}`} />
+      );
+    });
     return (
       <HashTagsWrapper>
-        <StyledChip label="#pink" />
-        <StyledChip label="#wallsize" />
-        <StyledChip label="#mission" />
-        <StyledChip label="#pinkwall" />
+        {tags}
       </HashTagsWrapper>
     );
   }
-  render() {
+  renderPlace = () => {
+    const place = this.props.place;
     return (
       <div>
         <Helmet
-          title="Place"
+          title={place.name}
           meta={[
-            { name: 'description', content: 'Description of Place' },
+            { name: 'description', content: place.name },
           ]}
         />
         {this.renderBackButton()}
@@ -197,6 +196,14 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
         {this.renderInfoList()}
         <Divider light />
         {this.renderHashTags()}
+      </div>
+    );
+  }
+  render() {
+    const { place } = this.props;
+    return (
+      <div>
+        {place && this.renderPlace()}
       </div>
     );
   }
@@ -269,12 +276,13 @@ Place.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  Place: makeSelectPlace(),
+  place: getPlace,
+  isLoaded: getIsLoaded,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    updatePlace: (id) => dispatch(fetchPlace(id)),
   };
 }
 

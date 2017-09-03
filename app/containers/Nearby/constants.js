@@ -4,4 +4,5 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/Nearby/DEFAULT_ACTION';
+export const CLOSE_SELECT_CITY_MODAL = 'app/Nearby/CLOSE_SELECT_CITY_MODAL';
+export const OPEN_SELECT_CITY_MODAL = 'app/Nearby/OPEN_SELECT_CITY_MODAL';

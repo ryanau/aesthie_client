@@ -1,25 +1,19 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the place state domain
- */
-const selectPlaceDomain = () => (state) => state.get('place');
+const selectPlaceState = (state) => state.get('place');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by Place
- */
-
-const makeSelectPlace = () => createSelector(
-  selectPlaceDomain(),
-  (substate) => substate.toJS()
+const getPlace = createSelector(
+  selectPlaceState,
+  (state) => state.get('place'),
 );
 
-export default makeSelectPlace;
+const getIsLoaded = createSelector(
+  selectPlaceState,
+  (state) => state.get('isLoaded'),
+);
+
 export {
-  selectPlaceDomain,
+  getPlace,
+  getIsLoaded,
 };
+

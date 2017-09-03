@@ -1,0 +1,3 @@
+export const CHANGE_SELECTED_CITY = 'app/root/CHANGE_SELECTED_CITY';
+
+

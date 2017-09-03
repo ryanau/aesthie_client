@@ -5,11 +5,14 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  UPDATE_PLACE,
 } from './constants';
+import { searchPlace } from 'data/search';
 
-export function defaultAction() {
+export function fetchPlace(id) {
+  const result = searchPlace(id)
   return {
-    type: DEFAULT_ACTION,
+    type: UPDATE_PLACE,
+    payload: result,
   };
 }

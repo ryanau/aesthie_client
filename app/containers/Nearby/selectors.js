@@ -1,25 +1,13 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the nearby state domain
- */
-const selectNearbyDomain = () => (state) => state.get('nearby');
+const selectNearbyState = (state) => state.get('nearby');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by Nearby
- */
-
-const makeSelectNearby = () => createSelector(
-  selectNearbyDomain(),
-  (substate) => substate.toJS()
+const getIsSelectCityModalOpen = createSelector(
+  selectNearbyState,
+  (state) => state.get('isSelectCityModalOpen'),
 );
 
-export default makeSelectNearby;
 export {
-  selectNearbyDomain,
+  getIsSelectCityModalOpen,
 };
+

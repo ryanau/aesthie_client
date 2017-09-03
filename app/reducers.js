@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import citiesReducer from 'entities/cities/reducer';
 import placesReducer from 'entities/places/reducer';
+import rootReducer from 'root/reducer';
 
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
@@ -46,6 +47,7 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
+    root: rootReducer,
     entities: combineReducers({
       cities: citiesReducer,
       places: placesReducer,
