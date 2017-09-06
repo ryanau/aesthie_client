@@ -26,6 +26,7 @@ import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
 import { fetchPlace } from './actions';
 import { getPlace, getIsLoaded } from './selectors';
+import { sentence } from 'change-case';
 
 export class Place extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -78,7 +79,7 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
     return (
       <StyledBackButton onClick={() => {this.props.router.push('/')}}>
         <StyledBackTypography type="subheading" component="h3">
-          <ChevronLeftIcon />
+          router, <ChevronLeftIcon />
           <FormattedMessage {...messages.back} />
         </StyledBackTypography>
       </StyledBackButton>
@@ -151,10 +152,10 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
             return (
               <InfoItem key={Object.keys(info)[0]}>
                 <Typography type="body2" component="h5">
-                  {Object.keys(info)[0]}
+                  {sentence(Object.keys(info)[0])}
                 </Typography>
                 <Typography type="body1" component="p">
-                  {Object.values(info)[0]}
+                  {sentence(Object.values(info)[0])}
                 </Typography>
               </InfoItem>
             );
@@ -184,7 +185,6 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
             { name: 'description', content: place.name },
           ]}
         />
-        {this.renderBackButton()}
         {this.renderImagesSlider()}
         {this.renderHeaderInfo()}
         {this.renderControls()}
@@ -262,7 +262,7 @@ const StyledChip = styled(Chip)`
 `
 
 const StyledBackButton = styled.button`
-  margin-left: -10px;
+  margin-left: -0.75rem;
 `
 
 const StyledBackTypography = styled(Typography)`
@@ -272,7 +272,6 @@ const StyledBackTypography = styled(Typography)`
 const { } = PropTypes;
 
 Place.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

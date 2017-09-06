@@ -7,8 +7,8 @@
         "district": "Mission",
         "author": "Ryan Au",
         "coordinates": {
-          "lat": "37.7841393",
-          "lng": "-122.3957547"
+          "lat": 37.7841393,
+          "lng": -122.3957547
         },
         "tips": [
           "Bacon bacon bacon",
@@ -31,8 +31,8 @@
         "district": "SOMA",
         "author": "Ryan Au",
         "coordinates": {
-          "lat": "37.7841393",
-          "lng": "-122.3957547"
+          "lat": 37.781972,
+          "lng": -122.413850
         },
         "tips": [
           "juice"
@@ -56,13 +56,34 @@
         "district": "Melrose",
         "author": "Ryan Au",
         "coordinates": {
-          "lat": "37.7841393",
-          "lng": "-122.3957547"
+          "lat": 34.0407,
+          "lng": -118.2468
         },
         "tips": [],
         "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
         "hash_tags": [
           "blue", "bright", "circles", "door"
+        ],
+        "info": [
+          { "parking": 4 },
+          { "neighborhood": 1 },
+          { "popularity": 9 },
+          { "temporary": "Yes" }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Love Wall",
+        "district": "Melrose",
+        "author": "Ryan Au",
+        "coordinates": {
+          "lat": 34.0736,
+          "lng": -118.4004
+        },
+        "tips": [],
+        "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
+        "hash_tags": [
+          "orange", "bright", "circles", "small"
         ],
         "info": [
           { "parking": 4 },

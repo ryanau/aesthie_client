@@ -9,6 +9,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import Card, { CardContent, CardMedia } from 'material-ui/Card';
+import ChevronRightIcon from 'material-ui-icons/ChevronRight';
 
 import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
@@ -27,40 +30,117 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
   constructor(props) {
     super(props);
     this.state = {
-      markers: [{
-        position: {
-          lat: 25.0112183,
-          lng: 121.52067570000001,
-        },
-        key: `Taiwan`,
-        defaultAnimation: 2,
-      }],
+      selectedMarker: null,
+      selectedMarkerId: null,
     };
   }
-  componentWillReceiveProps
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.center !== this.props.center) {
+      this.setState({
+        selectedMarker: null,
+        selectedMarkerId: null,
+      });
+    }
+  }
+  handleMarkerClicked = (marker) => {
+    this.setState({
+      selectedMarker: marker,
+      selectedMarkerId: marker.id,
+    });
+  }
   renderMarkers = () => {
-    return this.state.markers.map((marker) => {
+    const markers = this.props.markers.map(marker => {
+      return {
+        position: {
+          lat: marker.coordinates.lat,
+          lng: marker.coordinates.lng,
+        },
+        key: marker.name,
+        opacity: this.state.selectedMarkerId === marker.id ? 1 : 0.75,
+        defaultAnimation: 2,
+        ...marker,
+      }
+    });
+    return markers.map((marker) => {
       return (
         <Marker
           {...marker}
+          onClick={() => this.handleMarkerClicked(marker)}
         />
       );
     });
   }
+  renderCard = () => {
+    const marker = this.state.selectedMarker;
+    return (
+      <StyledCard>
+        <StyledCardContent>
+          <section>
+            <Typography type="body2" component="h1">
+              {marker.name}
+            </Typography>
+            <Typography noWrap type="body1" component="h2" color="secondary">
+              {marker.district}
+            </Typography>
+          </section>
+          <StyledLinkButton onClick={() => this.props.router.push(`places/${marker.id}`)}>
+            <Typography type="body2">
+              Details
+              <ChevronRightIcon />
+            </Typography>
+          </StyledLinkButton>
+        </StyledCardContent>
+        <CardMedia>
+          <StyledImg
+            alt="article-banner"
+            src="http://via.placeholder.com/120x120"
+          />
+        </CardMedia>
+      </StyledCard>
+    );
+  }
   render() {
     const { center } = this.props;
     return (
-      <GoogleMap
-        defaultZoom={11}
-        defaultCenter={center}
-        defaultOptions={DEFAULT_OPTIONS}
-        center={center}
-      >
-        {this.renderMarkers()}
-      </GoogleMap>
+      <div>
+        <GoogleMap
+          defaultZoom={11}
+          defaultCenter={center}
+          defaultOptions={DEFAULT_OPTIONS}
+          center={center}
+        >
+          {this.renderMarkers()}
+          {this.state.selectedMarker && this.renderCard()}
+        </GoogleMap>
+      </div>
     );
   }
 }
+
+const StyledLinkButton = styled.button`
+  padding: 0;
+  display: flex;
+  align-items: center;
+`
+
+const StyledCardContent = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const StyledCard = styled(Card)`
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  bottom: 65px;
+  justify-content: space-between;
+  width: 100%;
+`
+
+const StyledImg = styled.img`
+  width: 100%;
+`
 
 const { object } = PropTypes;
 

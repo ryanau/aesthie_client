@@ -29,7 +29,7 @@ class Card extends React.Component { // eslint-disable-line react/prefer-statele
           <Typography type="body2" component="h4">
             {place.name}
           </Typography>
-          <Typography noWrap type="body1" component="p">
+          <Typography noWrap type="body1" component="p" color="secondary">
             {place.district}
           </Typography>
         </CardContent>

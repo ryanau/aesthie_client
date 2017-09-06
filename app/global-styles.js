@@ -16,6 +16,10 @@ injectGlobal`
     font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
+  button {
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  }
+
   #app {
     background-color: #fafafa;
     min-height: 100%;

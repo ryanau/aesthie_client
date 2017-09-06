@@ -39,11 +39,13 @@ export class Nearby extends React.Component { // eslint-disable-line react/prefe
     }
   }
   renderMap = () => {
-    const { citiesById, selectedCityId } = this.props;
+    const { router, citiesById, selectedCityId, placesList } = this.props;
     const city = citiesById.get(JSON.stringify(selectedCityId));
     return (
       <Map
+        router={router}
         center={city.get('coordinates').toJS()}
+        markers={placesList}
         containerElement={
           <div style={{ height: `calc(100vh - 112px)` }} />
         }
