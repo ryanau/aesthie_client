@@ -43,7 +43,7 @@ class SelectCityModal extends React.Component { // eslint-disable-line react/pre
               {name}
             </Typography>
           </CityName>
-          <img alt={name} src="https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=280" />
+          <img alt={name} src={city.get('image')} />
         </ImageButton>
       );
     });

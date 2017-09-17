@@ -34,11 +34,14 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.center !== this.props.center) {
-      this.setState({
-        selectedMarker: null,
-        selectedMarkerId: null,
-      });
+      this.resetToDefaultState();
     }
+  }
+  resetToDefaultState = () => {
+    this.setState({
+      selectedMarker: null,
+      selectedMarkerId: null,
+    });
   }
   handleMarkerClicked = (marker) => {
     this.setState({
@@ -87,7 +90,7 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
         <CardMedia>
           <StyledImg
             alt="article-banner"
-            src="http://via.placeholder.com/120x120"
+            src={marker.images[0]}
           />
         </CardMedia>
       </StyledCard>
@@ -102,6 +105,7 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
           defaultCenter={center}
           defaultOptions={DEFAULT_OPTIONS}
           center={center}
+          onClick={this.resetToDefaultState}
         >
           {this.renderMarkers()}
           {this.state.selectedMarker && this.renderCard()}
@@ -133,7 +137,8 @@ const StyledCard = styled(Card)`
 `;
 
 const StyledImg = styled.img`
-  width: 100%;
+  width: 180px;
+  height: 180px;
 `;
 
 const { object, shape, func } = PropTypes;

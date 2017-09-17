@@ -15,6 +15,7 @@ const initialState = fromJS({
         lat: 37.7749,
         lng: -122.4194,
       },
+      image: 'https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=280',
     },
     2: {
       id: 2,
@@ -24,6 +25,7 @@ const initialState = fromJS({
         lat: 34.0522,
         lng: -118.2437,
       },
+      image: 'https://lonelyplanetimages.imgix.net/a/g/hi/t/f4003584e847990e3cae4b5d8062e342-los-angeles.jpg?sharp=10&vib=20&w=280',
     },
   },
 });

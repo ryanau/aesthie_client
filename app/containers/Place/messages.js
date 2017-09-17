@@ -22,4 +22,8 @@ export default defineMessages({
     id: 'app.containers.Place.url',
     defaultMessage: 'URL copied to clipboard!',
   },
+  influencer: {
+    id: 'app.containers.Place.influencer',
+    defaultMessage: 'To have your photos featured, click here and sign up to be an Influencer!',
+  },
 });

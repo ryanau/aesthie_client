@@ -36,14 +36,17 @@ class Nav extends React.Component { // eslint-disable-line react/prefer-stateles
       value: 0,
     };
   }
+  componentWillMount() {
+    const path = this.props.router.getCurrentLocation().pathname;
+    this.setState({
+      value: PATH_HASH[path] || 0,
+    });
+  }
   componentWillReceiveProps(nextProps) {
-    const { router } = nextProps;
-    const path = router.getCurrentLocation().pathname;
-    if (path !== this.props.router.getCurrentLocation().pathname) {
-      this.setState({
-        value: PATH_HASH[path] || 0,
-      });
-    }
+    const path = nextProps.router.getCurrentLocation().pathname;
+    this.setState({
+      value: PATH_HASH[path] || 0,
+    });
   }
   handleChange = (e, value) => {
     this.setState({ value });

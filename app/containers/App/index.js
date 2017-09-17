@@ -16,7 +16,9 @@ import PropTypes from 'prop-types';
 import Nav from 'components/Nav';
 import styled from 'styled-components';
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+import withProgressBar from 'components/ProgressBar';
+
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
     children: PropTypes.node,
     router: PropTypes.object,
@@ -36,3 +38,5 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 const Container = styled.div`
   padding: 0.5rem 0.5rem 5rem 0.5rem;
 `;
+
+export default withProgressBar(App);

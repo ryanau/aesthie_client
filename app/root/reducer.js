@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 import { CHANGE_SELECTED_CITY } from './constants';
 
 const initialState = fromJS({
-  selectedCityId: 1,
+  selectedCityId: 2,
 });
 
 function rootReducer(state = initialState, { type, payload }) {

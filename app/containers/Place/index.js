@@ -52,33 +52,31 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
       infinite: true,
       autoplay: true,
       arrows: false,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 4000,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
     };
     return (
       <StyledSlider {...settings}>
-        <img
-          alt="article-banner"
-          src="http://via.placeholder.com/180x180"
-        />
-        <img
-          alt="article-banner"
-          src="http://via.placeholder.com/180x180"
-        />
-        <img
-          alt="article-banner"
-          src="http://via.placeholder.com/180x180"
-        />
-        <img
-          alt="article-banner"
-          src="http://via.placeholder.com/180x180"
-        />
-        <img
-          alt="article-banner"
-          src="http://via.placeholder.com/180x180"
-        />
+        {this.props.place.images.map((img) => {
+          return (
+            <img
+              key={img}
+              alt="article-banner"
+              src={img}
+            />
+          );
+        })}
+        <div
+          onClick={() => this.props.router.push('/influencer')}
+        >
+          <InfluencerBox>
+            <Typography type="title" component="h4">
+              <FormattedMessage {...messages.influencer} />
+            </Typography>
+          </InfluencerBox>
+        </div>
       </StyledSlider>
     );
   }
@@ -110,10 +108,16 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
       <Controls>
         <Author>
           <Typography type="body2" component="h3">
-            <Chip
-              avatar={<Avatar alt={author} src="http://via.placeholder.com/20x20" />}
-              label={author}
-            />
+            <a
+              href={`https://www.instagram.com/${author.substring(1, author.length)}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Chip
+                avatar={<Avatar alt={author} src="http://via.placeholder.com/20x20" />}
+                label={author}
+              />
+            </a>
           </Typography>
         </Author>
         <ControlButtonWrapper>
@@ -304,6 +308,10 @@ const ControlButtonWrapper = styled.div`
   display: flex;
   margin-top: 1rem;
 `;
+
+const InfluencerBox = styled.div`
+  margin: 8rem 2rem 5rem 2rem;
+  text-align: center;`;
 
 const { shape, func, string, number, arrayOf, object } = PropTypes;
 

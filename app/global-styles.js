@@ -9,15 +9,15 @@ injectGlobal`
   }
 
   body {
-    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
   }
 
   body.fontLoaded {
-    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   button {
-    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
   }
 
   #app {
@@ -28,7 +28,11 @@ injectGlobal`
 
   p,
   label {
-    font-family: 'Roboto', Times, 'Times New Roman', serif;
+    font-family: 'Poppins', Times, 'Times New Roman', serif;
     line-height: 1.5em;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;

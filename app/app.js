@@ -20,6 +20,9 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
 
+// Import Mixpanel
+import initializeMixpanel from 'utils/mixpanelHelper';
+
 // Import root app
 import App from 'containers/App';
 
@@ -47,6 +50,9 @@ import './global-styles';
 // Import root routes
 import createRoutes from './routes';
 
+// Initializations
+initializeMixpanel(document, window, process.env.NODE_ENV);
+
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
@@ -66,9 +72,16 @@ const rootRoute = {
   component: App,
   childRoutes: createRoutes(store),
 };
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: 'Poppins, "Helvetica Neue",Arial,sans-serif',
+  },
+});
 
 const render = (messages) => {
   ReactDOM.render(
+      <MuiThemeProvider theme={theme}>
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <Router
@@ -81,7 +94,8 @@ const render = (messages) => {
           }
         />
       </LanguageProvider>
-    </Provider>,
+    </Provider>
+      </MuiThemeProvider>,
     document.getElementById('app')
   );
 };

@@ -20,7 +20,7 @@ class Card extends React.Component { // eslint-disable-line react/prefer-statele
         <CardMedia>
           <StyledImg
             alt="article-banner"
-            src="http://via.placeholder.com/300x300"
+            src={place.images[0]}
           />
         </CardMedia>
         <CardContent style={{ padding: '0.25rem' }}>
