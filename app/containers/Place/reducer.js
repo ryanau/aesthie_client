@@ -17,10 +17,10 @@ const initialState = fromJS({
 function placeReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_PLACE:
-      return state.withMutations(s =>
+      return state.withMutations((s) =>
         s.set('place', action.payload)
          .set('isLoaded', true)
-      )
+      );
     default:
       return state;
   }

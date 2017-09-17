@@ -6,8 +6,16 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.components.Nav.header',
-    defaultMessage: 'This is the Nav component !',
+  discover: {
+    id: 'app.components.Nav.discover',
+    defaultMessage: 'Discover',
+  },
+  nearby: {
+    id: 'app.components.Nav.nearby',
+    defaultMessage: 'Nearby',
+  },
+  influencer: {
+    id: 'app.components.Nav.influencer',
+    defaultMessage: 'Influencer',
   },
 });

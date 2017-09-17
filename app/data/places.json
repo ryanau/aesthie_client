@@ -2,7 +2,7 @@
   "places": {
     "1": [
       {
-        "id": 1,
+        "id": 10,
         "name": "Clarion Alley",
         "district": "Mission",
         "author": "Ryan Au",
@@ -26,7 +26,7 @@
         ]
       },
       {
-        "id": 2,
+        "id": 11,
         "name": "Philz Coffee",
         "district": "SOMA",
         "author": "Ryan Au",
@@ -50,48 +50,10 @@
       }
     ],
     "2": [
-      {
-        "id": 3,
-        "name": "Pink Wall",
-        "district": "Melrose",
-        "author": "Ryan Au",
-        "coordinates": {
-          "lat": 34.0407,
-          "lng": -118.2468
-        },
-        "tips": [],
-        "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
-        "hash_tags": [
-          "blue", "bright", "circles", "door"
-        ],
-        "info": [
-          { "parking": 4 },
-          { "neighborhood": 1 },
-          { "popularity": 9 },
-          { "temporary": "Yes" }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Love Wall",
-        "district": "Melrose",
-        "author": "Ryan Au",
-        "coordinates": {
-          "lat": 34.0736,
-          "lng": -118.4004
-        },
-        "tips": [],
-        "description": "Chicken venison turducken cupim, sausage filet mignon andouille strip steak kielbasa fatback biltong pork belly. Pork strip steak leberkas fatback ball tip. Ham rump pork loin tri-tip cow biltong, tail drumstick frankfurter beef ribs. Drumstick spare ribs pork loin pork belly jerky salami beef, ball tip shank meatloaf corned beef pancetta porchetta hamburger filet mignon. Shank filet mignon ribeye ham hock salami.",
-        "hash_tags": [
-          "orange", "bright", "circles", "small"
-        ],
-        "info": [
-          { "parking": 4 },
-          { "neighborhood": 1 },
-          { "popularity": 9 },
-          { "temporary": "Yes" }
-        ]
-      }
-    ]
-  }
+{"id":1,"name":"Carrera Cafe","author":"@aesthie.fun","district":"Beverly Grove","coordinates":{"lat":34.0839,"lng":-118.3692},"description":"Cafe you can get custom latte art from with inspirational words, your face, images, etc.","info":[{"popularity":"New"},{"parking":"Metered street, some are permit only"},{"permanent":"Yes"}],"hash_tags":["latteart","customizable","cafe","coffee","carreracafe","lipwall"],"tips":["known for their famous lip wall. download \\\"coffee ripples\\\" app beforehand to create custom lattee art. la la land wall is unfortunately gone :(."]},
+{"id":2,"name":"Alfred Tea Room","author":"@aesthie.fun","district":"Beverly Grove","coordinates":{"lat":34.083723,"lng":-118.37547},"description":"cute phrases on wall","info":[{"popularity":"Up and coming"},{"parking":"metered Street, a pain"},{"permanent":"Yes"}],"hash_tags":["alfredtearoom","bubbletea","boba","coffee","tearoom","beverlygrove","tea"],"tips":["Be quick about taking your pics because the shop next door might complain. Don't forget the floor tiles are really pretty. take pics in front of pink wall."]},
+{"id":3,"name":"The MILK Shop","author":"@aesthie.fun","district":"Fairfax","coordinates":{"lat":34.07596,"lng":-118.348339},"description":"shot of sweets + milk logo outside","info":[{"popularity":"Iconic"},{"parking":"Metered street, private lot"},{"permanent":"Yes"}],"hash_tags":["milk","icecream","froyo","dessert","coffee","tea","fairfax","colorful","macaronsandwich"],"tips":["Popular flavors tend to run out","come early. line is insane at night."]},
+{"id":4,"name":"Sprinkles Ice Cream","author":"@aesthie.fun","district":"Beverly Hills","coordinates":{"lat":34.069559,"lng":-118.406168},"description":"cupcake atm machine","info":[{"popularity":"Hot"},{"parking":"Parking structure"},{"permanent":"Yes"}],"hash_tags":["icecream","sprinklesicecream","beverlyhills","dessert","cupcake","froyo"],"tips":["Order signature captain crunch ice cream. prepare for long wait after work"]},
+{"id":5,"name":"Honey & Butter Macarons","author":"@aesthie.fun","district":"Irvine","coordinates":{"lat":33.65023,"lng":-117.74339},"description":"cute character macarons","info":[{"popularity":"Hot"},{"parking":"Parking structure"},{"permanent":"Yes"}],"hash_tags":["macaron","dessert","icecream","honeyandbutter","customizable","cuteanimals"],"tips":["Certain character sells out early. boxes are only free if purchasing 10 macarons otherwie it's a $0.50 charge. don't forget you can sample ice cream flavor"]},
+{"id":6,"name":"Amazebowls","author":"@aesthie.fun","district":"DTLA","coordinates":{"lat":34.0442,"lng":-118.232336},"description":"Acai bowl in coconut","info":[{"popularity":"New"},{"parking":"street, 2 hr validated parking"},{"permanent":"Yes"}],"hash_tags":["amazebowls","acaibowls","coconut","colorful","tropic","dtla"],"tips":["Order the coconut bowl for the insta."]}] }
 }

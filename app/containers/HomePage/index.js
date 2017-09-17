@@ -20,29 +20,27 @@ import { partial } from 'lodash';
 
 import SearchBar from 'components/SearchBar';
 import CardsList from 'components/CardsList';
-import Button from 'material-ui/Button';
-import Dialog from 'material-ui/Dialog';
-import EmailIcon from 'material-ui-icons/Email';
-import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown';
-import Typography from 'material-ui/Typography';
 import SelectCityModal from 'components/SelectCityModal';
 
-import messages from './messages';
+import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown';
+import Typography from 'material-ui/Typography';
+
 import { getCities, getCitiesById } from 'entities/cities/selectors';
 import { getPlaces } from 'entities/places/selectors';
-import { getIsSelectCityModalOpen } from './selectors';
-import { closeSelectCityModal, openSelectCityModal } from './actions';
 import { getSelectedCityId } from 'root/selectors';
 import { changeSelectedCity } from 'root/actions';
 import { fetchPlaces } from 'entities/places/actions';
+import messages from './messages';
+import { getIsSelectCityModalOpen } from './selectors';
+import { closeSelectCityModal, openSelectCityModal } from './actions';
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    const { placesList, updatePlaces, citiesById, selectedCityId } = this.props;
+    const { placesList, updatePlaces, selectedCityId } = this.props;
     placesList.isEmpty() && updatePlaces(JSON.stringify(selectedCityId), '');
   }
   componentWillReceiveProps(nextProps) {
-    const { updatePlaces, citiesById, selectedCityId } = this.props;
+    const { updatePlaces, selectedCityId } = this.props;
     if (nextProps.selectedCityId !== selectedCityId) {
       updatePlaces(JSON.stringify(nextProps.selectedCityId), '');
     }
@@ -108,29 +106,41 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
 
 const CardsWrapper = styled.section`
   margin-top: 1.5rem;
-`
+`;
 
 const Location = styled.section`
   text-align: center;
-`
+`;
 
 const SelectCityButton = styled.button`
   border-bottom: 2px solid black;
   padding: 0;
   margin-left: 0.5rem;
-`
+`;
 
 const SearchBarWrapper = styled.section`
   margin-top: 1rem;
-`
+`;
 
 const SelectCityButtonWrapper = styled.div`
   text-align: center;
-`
+`;
 
-const { } = PropTypes;
+const { object, number, func, bool, shape } = PropTypes;
 
 HomePage.propTypes = {
+  citiesList: object,
+  selectedCityId: number,
+  handleChangeSelectedCity: func,
+  isSelectCityModalOpen: bool,
+  handleCloseSelectCityModal: func,
+  placesList: object,
+  updatePlaces: func,
+  citiesById: object,
+  handleOpenSelectCityModal: func,
+  router: shape({
+    push: func.isRequired,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({

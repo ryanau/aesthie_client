@@ -7,15 +7,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+import { invert } from 'lodash';
 
-import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
 import ExploreIcon from 'material-ui-icons/Explore';
 import StarsIcon from 'material-ui-icons/Stars';
 import LocationOnIcon from 'material-ui-icons/LocationOn';
-import { invert } from 'lodash';
 
-import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 const StyledNav = styled(BottomNavigation)`
@@ -37,12 +36,14 @@ class Nav extends React.Component { // eslint-disable-line react/prefer-stateles
       value: 0,
     };
   }
-  componentDidMount() {
-    const { router } = this.props;
+  componentWillReceiveProps(nextProps) {
+    const { router } = nextProps;
     const path = router.getCurrentLocation().pathname;
-    this.setState({
-      value: PATH_HASH[path] || 0,
-    });
+    if (path !== this.props.router.getCurrentLocation().pathname) {
+      this.setState({
+        value: PATH_HASH[path] || 0,
+      });
+    }
   }
   handleChange = (e, value) => {
     this.setState({ value });
@@ -56,19 +57,21 @@ class Nav extends React.Component { // eslint-disable-line react/prefer-stateles
           onChange={this.handleChange}
           value={this.state.value}
         >
-          <BottomNavigationButton label="Discover" icon={<ExploreIcon />} />
-          <BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
-          <BottomNavigationButton label="Influencer" icon={<StarsIcon />} />
+          <BottomNavigationButton label={<FormattedMessage {...messages.discover} />} icon={<ExploreIcon />} />
+          <BottomNavigationButton label={<FormattedMessage {...messages.nearby} />} icon={<LocationOnIcon />} />
+          <BottomNavigationButton label={<FormattedMessage {...messages.influencer} />} icon={<StarsIcon />} />
         </StyledNav>
       </div>
     );
   }
 }
 
-const {  } = PropTypes;
+const { shape, func } = PropTypes;
 
 Nav.propTypes = {
-
+  router: shape({
+    push: func.isRequired,
+  }),
 };
 
 export default Nav;

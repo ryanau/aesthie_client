@@ -7,11 +7,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+// import { FormattedMessage } from 'react-intl';
+
 import Typography from 'material-ui/Typography';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import Modal from 'components/Modal';
+// import messages from './messages';
 
 class SelectCityModal extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -27,7 +28,7 @@ class SelectCityModal extends React.Component { // eslint-disable-line react/pre
         handleChangeSelectedCity(id);
       }
       handleCloseSelectCityModal();
-    }
+    };
     const images = citiesList.map((city) => {
       const name = city.get('name');
       const id = city.get('id');
@@ -45,7 +46,7 @@ class SelectCityModal extends React.Component { // eslint-disable-line react/pre
           <img alt={name} src="https://lonelyplanetimages.imgix.net/a/g/hi/t/9cf024dfd5c0bcb2b17f4785340145ea-san-francisco.jpg?sharp=10&vib=20&w=280" />
         </ImageButton>
       );
-    })
+    });
     return (
       <Modal
         isOpen={isSelectCityModalOpen}
@@ -62,14 +63,14 @@ class SelectCityModal extends React.Component { // eslint-disable-line react/pre
 const CityName = styled.div`
   position: absolute;
   color: white;
-`
+`;
 
 const ImageButtonsWrapper = styled.section`
   display: flex;
   flex-direction: column;
   margin-top: 20%;
   align-items: center;
-`
+`;
 
 const ImageButton = styled.button`
   align-items: center;
@@ -77,13 +78,17 @@ const ImageButton = styled.button`
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  opacity: ${props => props.isSelected ? 1 : 0.3}
-`
+  opacity: ${(props) => props.isSelected ? 1 : 0.3}
+`;
 
-const {  } = PropTypes;
+const { object, number, bool, func } = PropTypes;
 
 SelectCityModal.propTypes = {
-
+  citiesList: object,
+  selectedCityId: number,
+  handleChangeSelectedCity: func,
+  isSelectCityModalOpen: bool,
+  handleCloseSelectCityModal: func,
 };
 
 export default SelectCityModal;

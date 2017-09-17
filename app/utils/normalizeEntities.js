@@ -7,4 +7,3 @@ const normalizeEntities = (entities) => entities.reduce((obj, elm) => obj.withMu
 
 export default normalizeEntities;
 
-

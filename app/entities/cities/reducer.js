@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import normalize from 'utils/normalizeEntities';
+// import normalize from 'utils/normalizeEntities';
 
 import {
 } from './constants';
@@ -36,5 +36,4 @@ function citiesReducer(state = initialState, { type, payload }) {
 }
 
 export default citiesReducer;
-
 

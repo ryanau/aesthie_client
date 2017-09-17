@@ -19,6 +19,7 @@ import styled from 'styled-components';
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
     children: PropTypes.node,
+    router: PropTypes.object,
   };
   render() {
     return (
@@ -34,4 +35,4 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
 const Container = styled.div`
   padding: 0.5rem 0.5rem 5rem 0.5rem;
-`
+`;

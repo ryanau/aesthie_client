@@ -9,31 +9,31 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { GoogleMap, Marker } from "react-google-maps";
-import makeSelectNearby from './selectors';
-import messages from './messages';
 import Typography from 'material-ui/Typography';
 import ArrowDropDownIcon from 'material-ui-icons/ArrowDropDown';
 
-import SelectCityModal from 'components/SelectCityModal';
-import Map from './components/Map';
 import { getCities, getCitiesById } from 'entities/cities/selectors';
-import { getSelectedCityId } from 'root/selectors';
-import { changeSelectedCity } from 'root/actions';
-import { getIsSelectCityModalOpen } from './selectors';
-import { closeSelectCityModal, openSelectCityModal } from './actions';
 import { getPlaces } from 'entities/places/selectors';
 import { fetchPlaces } from 'entities/places/actions';
+import { getSelectedCityId } from 'root/selectors';
+import { changeSelectedCity } from 'root/actions';
+
+import SelectCityModal from 'components/SelectCityModal';
+import Map from './components/Map';
+
+import { getIsSelectCityModalOpen } from './selectors';
+import { closeSelectCityModal, openSelectCityModal } from './actions';
+// import messages from './messages';
 
 export class Nearby extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    const { placesList, updatePlaces, citiesById, selectedCityId } = this.props;
+    const { placesList, updatePlaces, selectedCityId } = this.props;
     placesList.isEmpty() && updatePlaces(JSON.stringify(selectedCityId), '');
   }
   componentWillReceiveProps(nextProps) {
-    const { updatePlaces, citiesById, selectedCityId } = this.props;
+    const { updatePlaces, selectedCityId } = this.props;
     if (nextProps.selectedCityId !== selectedCityId) {
       updatePlaces(JSON.stringify(nextProps.selectedCityId), '');
     }
@@ -47,10 +47,10 @@ export class Nearby extends React.Component { // eslint-disable-line react/prefe
         center={city.get('coordinates').toJS()}
         markers={placesList}
         containerElement={
-          <div style={{ height: `calc(100vh - 112px)` }} />
+          <div style={{ height: 'calc(100vh - 112px)' }} />
         }
         mapElement={
-          <div style={{ height: `100%` }} />
+          <div style={{ height: '100%' }} />
         }
       />
     );
@@ -106,22 +106,32 @@ export class Nearby extends React.Component { // eslint-disable-line react/prefe
 
 const MapContainer = styled.section`
   margin: -0.5rem;
-`
+`;
 
 const SelectCityButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 0.5rem 0 1.25rem 0;
-`
+`;
 
 const SelectCityButton = styled.button`
   border-bottom: 2px solid black;
   padding: 0;
-`
+`;
 
-const { } = PropTypes;
+const { object, number, func, bool } = PropTypes;
 
 Nearby.propTypes = {
+  citiesList: object,
+  placesList: object,
+  updatePlaces: func.isRequired,
+  citiesById: object,
+  selectedCityId: number,
+  router: object,
+  isSelectCityModalOpen: bool,
+  handleOpenSelectCityModal: func.isRequired,
+  handleChangeSelectedCity: func.isRequired,
+  handleCloseSelectCityModal: func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

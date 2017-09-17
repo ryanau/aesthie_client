@@ -20,4 +20,3 @@ function placesReducer(state = initialState, { type, payload }) {
 
 export default placesReducer;
 
-

@@ -7,15 +7,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
 
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 const DEFAULT_OPTIONS = {
   mapTypeControl: false,
@@ -24,7 +22,7 @@ const DEFAULT_OPTIONS = {
   draggableCursor: 'default',
   draggingCursor: 'move',
   fullscreenControl: false,
-}
+};
 
 class MapComponent extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -49,26 +47,22 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
     });
   }
   renderMarkers = () => {
-    const markers = this.props.markers.map(marker => {
-      return {
-        position: {
-          lat: marker.coordinates.lat,
-          lng: marker.coordinates.lng,
-        },
-        key: marker.name,
-        opacity: this.state.selectedMarkerId === marker.id ? 1 : 0.75,
-        defaultAnimation: 2,
-        ...marker,
-      }
-    });
-    return markers.map((marker) => {
-      return (
-        <Marker
-          {...marker}
-          onClick={() => this.handleMarkerClicked(marker)}
-        />
-      );
-    });
+    const markers = this.props.markers.map((marker) => ({
+      position: {
+        lat: marker.coordinates.lat,
+        lng: marker.coordinates.lng,
+      },
+      key: marker.name,
+      opacity: this.state.selectedMarkerId === marker.id ? 1 : 0.75,
+      defaultAnimation: 2,
+      ...marker,
+    }));
+    return markers.map((marker) => (
+      <Marker
+        {...marker}
+        onClick={() => this.handleMarkerClicked(marker)}
+      />
+      ));
   }
   renderCard = () => {
     const marker = this.state.selectedMarker;
@@ -121,13 +115,13 @@ const StyledLinkButton = styled.button`
   padding: 0;
   display: flex;
   align-items: center;
-`
+`;
 
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
+`;
 
 const StyledCard = styled(Card)`
   display: flex;
@@ -136,15 +130,20 @@ const StyledCard = styled(Card)`
   bottom: 65px;
   justify-content: space-between;
   width: 100%;
-`
+`;
 
 const StyledImg = styled.img`
   width: 100%;
-`
+`;
 
-const { object } = PropTypes;
+const { object, shape, func } = PropTypes;
 
 MapComponent.propTypes = {
+  center: object,
+  markers: shape(object),
+  router: shape({
+    push: func.isRequired,
+  }),
 };
 
 const Map = withGoogleMap(MapComponent);

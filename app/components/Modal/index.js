@@ -11,21 +11,22 @@ import Dialog from 'material-ui/Dialog';
 import CloseIcon from 'material-ui-icons/Close';
 import Button from 'material-ui/Button';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
 
 class Modal extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { isOpen, onCloseModal, children } = this.props;
     return (
       <Dialog
         fullScreen
-        open={this.props.isOpen}
-        onRequestClose={this.props.onCloseModal}
+        open={isOpen}
+        onRequestClose={onCloseModal}
       >
         <CloseIconWrapper>
-          <Button dense><CloseIcon onClick={this.props.onCloseModal} /></Button>
+          <Button dense><CloseIcon onClick={onCloseModal} /></Button>
         </CloseIconWrapper>
-        {this.props.children}
+        {children}
       </Dialog>
     );
   }
@@ -36,13 +37,14 @@ const CloseIconWrapper = styled.div`
   right: -5px;
   margin-top: 0.5rem;
   z-index: 10;
-`
+`;
 
-const { bool, func } = PropTypes;
+const { bool, func, element } = PropTypes;
 
 Modal.propTypes = {
   isOpen: bool.isRequired,
   onCloseModal: func.isRequired,
+  children: element.isRequired,
 };
 
 export default Modal;
