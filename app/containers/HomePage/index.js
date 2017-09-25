@@ -96,7 +96,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
           />
         </SearchBarWrapper>
         <CardsWrapper>
-          <CardsList onCardClicked={this.props.router.push} places={this.props.placesList} />
+          <CardsList goToLocation={this.props.router.push} places={this.props.placesList} />
         </CardsWrapper>
         {this.renderLocationModal()}
       </div>

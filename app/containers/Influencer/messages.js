@@ -9,14 +9,17 @@ export default defineMessages({
   description: {
     id: 'app.containers.Influencer.description',
     defaultMessage:
-      `We built Aesthie to let people discover the trendiest insta-worthy spots in different cities.
-      But we also want to help you in becoming the next influencer.
-      You don’t need to have tens of thousands of followers, as long as your Instagram feed is aesthetic and interesting, we want to invite you in joining our Influencer program!
-      We have a lot of new features in the works, and as an Influencer, you will have early access to all of them.`,
+    `
+      We built Aesthie to help you discover the trendiest and most insta-worthy spots in different cities.
+      We are looking for high quality photos to be featured on our site.
+      You don’t need to have tens of thousands of followers, as long as your Instagram feed is aesthetic and interesting, you are who we're looking for.
+      Plus, you'll have early access and be able to beta test new features!
+      Sign up to join the invite list!
+    `,
   },
   what: {
     id: 'app.containers.Influencer.what',
-    defaultMessage: 'What is Aesthie Influencer?',
+    defaultMessage: 'Want to get featured?',
   },
   signOff: {
     id: 'app.containers.Influencer.signOff',

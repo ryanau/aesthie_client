@@ -17,12 +17,6 @@ import LocationOnIcon from 'material-ui-icons/LocationOn';
 
 import messages from './messages';
 
-const StyledNav = styled(BottomNavigation)`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-`;
-
 const PATH_HASH = {
   '/': 0,
   '/nearby': 1,
@@ -68,6 +62,14 @@ class Nav extends React.Component { // eslint-disable-line react/prefer-stateles
     );
   }
 }
+
+const StyledNav = styled(BottomNavigation)`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 12px;
+`;
+
 
 const { shape, func } = PropTypes;
 

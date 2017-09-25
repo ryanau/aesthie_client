@@ -57,15 +57,30 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
       slidesToShow: 1,
       slidesToScroll: 1,
     };
+    const author = 'ryanau'
     return (
-      <StyledSlider {...settings}>
-        {this.props.place.images.map((img) => {
+      <StyledSlider {...settings} style={{ height: 'calc(100vw - 1rem)' }}>
+        {this.props.place.images.map((imgObject) => {
+          const url = Object.values(imgObject)[0];
+          const author = Object.keys(imgObject)[0];
           return (
-            <img
-              key={img}
-              alt="article-banner"
-              src={img}
-            />
+            <ImageWrapper key={url}>
+              <img
+                src={url}
+                style={{ width: 'calc(100vw - 1rem)', height: 'calc(100vw - 1rem)', objectFit: 'cover' }}
+              />
+              <AuthorWrapper>
+                <a href={`https://instagram.com/${author}`}>
+                  <Typography
+                    type="body2"
+                    component="h5"
+                    style={{ fontSize: '12px' }}
+                  >
+                    @{author}
+                  </Typography>
+                </a>
+              </AuthorWrapper>
+            </ImageWrapper>
           );
         })}
         <div
@@ -237,6 +252,19 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
     );
   }
 }
+
+const ImageWrapper = styled.div`
+  position: relative;
+`
+
+const AuthorWrapper = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  color: white;
+  right: 0;
+  background-color: white;
+  padding: 0.1rem 0.8rem;
+`
 
 const StyledSlider = styled(Slider)`
   margin-bottom: 2.25rem;

@@ -24,6 +24,6 @@ export default defineMessages({
   },
   influencer: {
     id: 'app.containers.Place.influencer',
-    defaultMessage: 'To have your photos featured, click here and sign up to be an Influencer!',
+    defaultMessage: 'To have your photos featured, click here to join the invite list!',
   },
 });

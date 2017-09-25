@@ -16,6 +16,6 @@ export default defineMessages({
   },
   influencer: {
     id: 'app.components.Nav.influencer',
-    defaultMessage: 'Influencer',
+    defaultMessage: 'Get featured',
   },
 });
