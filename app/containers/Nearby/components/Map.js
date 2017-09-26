@@ -43,6 +43,13 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
       selectedMarkerId: null,
     });
   }
+  handleAuthorClicked = (e) => {
+    const marker = this.state.selectedMarker;
+    const images = marker.images;
+    const author = Object.keys(images[0])[0];
+    e.stopPropagation();
+    window.location.href = `https://instagram.com/${author}`;
+  }
   handleMarkerClicked = (marker) => {
     this.setState({
       selectedMarker: marker,
@@ -69,6 +76,9 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
   }
   renderCard = () => {
     const marker = this.state.selectedMarker;
+    const images = marker.images;
+    const url = Object.values(images[0])[0];
+    const author = Object.keys(images[0])[0];
     return (
       <StyledCard>
         <StyledCardContent>
@@ -90,8 +100,18 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
         <CardMedia>
           <StyledImg
             alt="article-banner"
-            src={marker.images[0]}
+            src={url}
           />
+          <AuthorWrapper>
+            <Typography
+              type="body2"
+              component="h5"
+              style={{ fontSize: '12px' }}
+              onClick={(e) => this.handleAuthorClicked(e)}
+            >
+              @{author}
+            </Typography>
+          </AuthorWrapper>
         </CardMedia>
       </StyledCard>
     );
@@ -114,6 +134,15 @@ class MapComponent extends React.Component { // eslint-disable-line react/prefer
     );
   }
 }
+
+const AuthorWrapper = styled.div`
+  position: absolute;
+  bottom: 5px;
+  color: white;
+  right: 0;
+  background-color: white;
+  padding: 0.1rem 0.8rem;
+`
 
 const StyledLinkButton = styled.button`
   padding: 0;
@@ -139,6 +168,7 @@ const StyledCard = styled(Card)`
 const StyledImg = styled.img`
   width: 180px;
   height: 180px;
+  object-fit: cover;
 `;
 
 const { object, shape, func } = PropTypes;

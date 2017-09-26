@@ -129,7 +129,7 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
               rel="noopener noreferrer"
             >
               <Chip
-                avatar={<Avatar alt={author} src="http://via.placeholder.com/20x20" />}
+                avatar={<Avatar alt={author} src="https://scontent-lax3-1.cdninstagram.com/t51.2885-19/11950700_1048498055170413_19912677_a.jpg" />}
                 label={author}
               />
             </a>
@@ -174,7 +174,7 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
   renderDescription = () => (
     <Description>
       <Typography type="body1" component="p">
-        {sentence(this.props.place.description)}
+        {this.props.place.description}
       </Typography>
     </Description>
     )
@@ -187,7 +187,7 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
         <TipRow>
           {this.props.place.tips.map((tip) => (
             <Typography key={tip} type="body1" component="p">
-                  - {sentence(tip)}
+                  - {tip}
             </Typography>
               ))}
         </TipRow>
@@ -223,9 +223,9 @@ export class Place extends React.Component { // eslint-disable-line react/prefer
     return (
       <div>
         <Helmet
-          title={place.name}
+          title={`Aesthie | ${place.name}`}
           meta={[
-            { name: 'description', content: place.name },
+            { name: place.description, content: place.name },
           ]}
         />
         {this.renderImagesSlider()}
